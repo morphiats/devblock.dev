@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Airdrops — DevBlock</title>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body>
+<div class="counter-bar">
+  <span><i class="ti ti-parachute"></i> <strong>3</strong> active airdrops</span>
+  <span><i class="ti ti-coin-bitcoin"></i> $42k in prizes this month</span>
+  <span><i class="ti ti-users"></i> <strong id="online">312</strong> online</span>
+</div>
+<div class="topbar">
+  <a href="../index.html" class="logo">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="7" fill="#1D9E75"/><path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.8-.6-1.4-1.5-1.4H10v2.8z" fill="white"/><rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/></svg>
+    <div class="logo-wordmark"><span class="logo-block">Dev</span><span class="logo-dev">Block</span></div>
+  </a>
+  <div class="search-bar"><i class="ti ti-search"></i><input type="text" placeholder="Search airdrops..."/></div>
+  <div class="topbar-right">
+    <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
+    <button class="btn btn-primary"><i class="ti ti-wallet"></i> Connect Wallet</button>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="../index.html" class="nav-tab"><i class="ti ti-home"></i><span>Feed</span></a>
+  <a href="compete.html" class="nav-tab"><i class="ti ti-trophy"></i><span>Compete</span></a>
+  <a href="hire.html" class="nav-tab"><i class="ti ti-briefcase"></i><span>Hire</span></a>
+  <a href="airdrops.html" class="nav-tab active"><i class="ti ti-parachute"></i><span>Airdrops</span></a>
+  <a href="my-ai.html" class="nav-tab"><i class="ti ti-robot"></i><span>My AI</span></a>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <a href="../index.html" class="nav-item"><i class="ti ti-home"></i> Feed</a>
+    <a href="compete.html" class="nav-item"><i class="ti ti-trophy"></i> Compete</a>
+    <a href="hire.html" class="nav-item"><i class="ti ti-briefcase"></i> Hire</a>
+    <a href="airdrops.html" class="nav-item active"><i class="ti ti-parachute"></i> Airdrops</a>
+    <a href="my-ai.html" class="nav-item"><i class="ti ti-robot"></i> My AI</a>
+    <div class="nav-section">How to Earn</div>
+    <a href="#" class="nav-item"><i class="ti ti-trophy"></i> Win competitions</a>
+    <a href="#" class="nav-item"><i class="ti ti-file-text"></i> Post content</a>
+    <a href="#" class="nav-item"><i class="ti ti-users"></i> Refer builders</a>
+    <a href="#" class="nav-item"><i class="ti ti-star"></i> Daily streaks</a>
+  </aside>
+  <main class="main">
+    <h1 style="font-size:20px; font-weight:700; margin-bottom:4px;">Airdrops & Rewards</h1>
+    <div class="tabs">
+      <div class="tab active">Active</div>
+      <div class="tab">Upcoming</div>
+      <div class="tab">My Earnings</div>
+      <div class="tab">Claim History</div>
+    </div>
+
+    <div class="post-card" style="flex-direction:column; gap:12px; border-color:#4CA3FF;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="background:#4CA3FF; color:#fff; padding:6px 12px; border-radius:8px; font-size:13px; font-weight:700;">⚡ SUI</div>
+          <div>
+            <div style="font-size:15px; font-weight:600;">SUI Builder Rewards — Season 1</div>
+            <div style="font-size:12px; color:var(--text2);">Sponsored by Mysten Labs</div>
+          </div>
+        </div>
+        <span class="live-badge" style="background:#4CA3FF; color:#fff;">ACTIVE</span>
+      </div>
+      <div style="background:var(--bg3); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text2);">HOW TO EARN</div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:13px;">
+          <div style="display:flex; justify-content:space-between;"><span>🏆 Win a SUI competition</span><span style="color:#4CA3FF; font-weight:600;">+500 SUI</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>📝 Post about SUI dev</span><span style="color:#4CA3FF; font-weight:600;">+10 SUI</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>💬 100+ upvotes on post</span><span style="color:#4CA3FF; font-weight:600;">+25 SUI</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>👥 Refer a builder</span><span style="color:#4CA3FF; font-weight:600;">+15 SUI</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>🔥 7-day streak</span><span style="color:#4CA3FF; font-weight:600;">+5 SUI</span></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; font-size:13px; color:var(--text2);">
+        <span><i class="ti ti-coin-bitcoin"></i> Pool: 50,000 SUI</span>
+        <span><i class="ti ti-clock"></i> Ends: Jul 31 2026</span>
+        <span><i class="ti ti-users"></i> 1,240 earning</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;"><i class="ti ti-wallet"></i> Connect to Claim</button>
+    </div>
+
+    <div class="post-card" style="flex-direction:column; gap:12px; border-color:#00C08B;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="background:#00C08B; color:#fff; padding:6px 12px; border-radius:8px; font-size:13px; font-weight:700;">🌿 NEAR</div>
+          <div>
+            <div style="font-size:15px; font-weight:600;">NEAR Dev Grants — Build on NEAR</div>
+            <div style="font-size:12px; color:var(--text2);">Sponsored by NEAR Foundation</div>
+          </div>
+        </div>
+        <span class="live-badge" style="background:#00C08B; color:#fff;">ACTIVE</span>
+      </div>
+      <div style="background:var(--bg3); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text2);">HOW TO EARN</div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:13px;">
+          <div style="display:flex; justify-content:space-between;"><span>🏆 Win a NEAR competition</span><span style="color:#00C08B; font-weight:600;">+1,000 NEAR</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>📝 Post NEAR tutorial</span><span style="color:#00C08B; font-weight:600;">+20 NEAR</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>🐛 Report a bug</span><span style="color:#00C08B; font-weight:600;">+50 NEAR</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>👥 Refer a builder</span><span style="color:#00C08B; font-weight:600;">+30 NEAR</span></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; font-size:13px; color:var(--text2);">
+        <span><i class="ti ti-coin-bitcoin"></i> Pool: 100,000 NEAR</span>
+        <span><i class="ti ti-clock"></i> Ends: Aug 15 2026</span>
+        <span><i class="ti ti-users"></i> 890 earning</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;"><i class="ti ti-wallet"></i> Connect to Claim</button>
+    </div>
+
+    <div class="post-card" style="flex-direction:column; gap:12px; border-color:#4488FF;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="background:#4488FF; color:#fff; padding:6px 12px; border-radius:8px; font-size:13px; font-weight:700;">🔵 ADA</div>
+          <div>
+            <div style="font-size:15px; font-weight:600;">Cardano Builder Program</div>
+            <div style="font-size:12px; color:var(--text2);">Sponsored by Cardano Foundation</div>
+          </div>
+        </div>
+        <span class="live-badge" style="background:#4488FF; color:#fff;">ACTIVE</span>
+      </div>
+      <div style="background:var(--bg3); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:8px; font-size:13px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text2);">HOW TO EARN</div>
+        <div style="display:flex; justify-content:space-between;"><span>🏆 Win ADA hackathon</span><span style="color:#4488FF; font-weight:600;">+$500 ADA</span></div>
+        <div style="display:flex; justify-content:space-between;"><span>📝 Plutus tutorial post</span><span style="color:#4488FF; font-weight:600;">+$10 ADA</span></div>
+        <div style="display:flex; justify-content:space-between;"><span>👥 Refer a builder</span><span style="color:#4488FF; font-weight:600;">+$20 ADA</span></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;"><i class="ti ti-wallet"></i> Connect to Claim</button>
+    </div>
+  </main>
+  <aside class="right-col">
+    <div class="widget-card">
+      <div class="widget-title">Your Earnings</div>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">0</div><div class="stat-lbl">SUI</div></div>
+        <div class="stat-box"><div class="stat-num">0</div><div class="stat-lbl">NEAR</div></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;"><i class="ti ti-wallet"></i> Connect Wallet</button>
+    </div>
+    <div class="widget-card">
+      <div class="widget-title">Earn More</div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:13px; color:var(--text2);">
+        <div style="display:flex; align-items:center; gap:8px;"><i class="ti ti-trophy" style="color:var(--accent);"></i> Enter competitions</div>
+        <div style="display:flex; align-items:center; gap:8px;"><i class="ti ti-file-text" style="color:var(--accent);"></i> Write tutorials</div>
+        <div style="display:flex; align-items:center; gap:8px;"><i class="ti ti-users" style="color:var(--accent);"></i> Refer builders</div>
+        <div style="display:flex; align-items:center; gap:8px;"><i class="ti ti-star" style="color:var(--accent);"></i> Daily login streaks</div>
+        <div style="display:flex; align-items:center; gap:8px;"><i class="ti ti-bug" style="color:var(--accent);"></i> Report bugs</div>
+      </div>
+    </div>
+  </aside>
+</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

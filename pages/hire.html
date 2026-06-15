@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hire — DevBlock</title>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body>
+<div class="counter-bar">
+  <span><i class="ti ti-users"></i> <strong id="online">312</strong> online</span>
+  <span><i class="ti ti-briefcase"></i> <strong>38</strong> jobs open</span>
+  <span><i class="ti ti-star"></i> <strong>1.2k</strong> devs available</span>
+</div>
+<div class="topbar">
+  <a href="../index.html" class="logo">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="7" fill="#1D9E75"/><path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.8-.6-1.4-1.5-1.4H10v2.8z" fill="white"/><rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/></svg>
+    <div class="logo-wordmark"><span class="logo-block">Dev</span><span class="logo-dev">Block</span></div>
+  </a>
+  <div class="search-bar"><i class="ti ti-search"></i><input type="text" placeholder="Search jobs, companies, skills..."/></div>
+  <div class="topbar-right">
+    <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
+    <button class="btn btn-primary"><i class="ti ti-wallet"></i> Connect Wallet</button>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="../index.html" class="nav-tab"><i class="ti ti-home"></i><span>Feed</span></a>
+  <a href="compete.html" class="nav-tab"><i class="ti ti-trophy"></i><span>Compete</span></a>
+  <a href="hire.html" class="nav-tab active"><i class="ti ti-briefcase"></i><span>Hire</span></a>
+  <a href="airdrops.html" class="nav-tab"><i class="ti ti-parachute"></i><span>Airdrops</span></a>
+  <a href="my-ai.html" class="nav-tab"><i class="ti ti-robot"></i><span>My AI</span></a>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <a href="../index.html" class="nav-item"><i class="ti ti-home"></i> Feed</a>
+    <a href="compete.html" class="nav-item"><i class="ti ti-trophy"></i> Compete</a>
+    <a href="hire.html" class="nav-item active"><i class="ti ti-briefcase"></i> Hire</a>
+    <a href="airdrops.html" class="nav-item"><i class="ti ti-parachute"></i> Airdrops</a>
+    <a href="my-ai.html" class="nav-item"><i class="ti ti-robot"></i> My AI</a>
+    <div class="nav-section">Filter by Chain</div>
+    <a href="#" class="nav-item"><i class="ti ti-brand-ethereum"></i> Ethereum</a>
+    <a href="#" class="nav-item"><i class="ti ti-hexagon"></i> SUI</a>
+    <a href="#" class="nav-item"><i class="ti ti-circle-letter-n"></i> NEAR</a>
+    <a href="#" class="nav-item"><i class="ti ti-circle-letter-a"></i> Cardano</a>
+    <a href="#" class="nav-item"><i class="ti ti-circle-letter-s"></i> Solana</a>
+  </aside>
+  <main class="main">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px;">
+      <h1 style="font-size:20px; font-weight:700;">Web3 Jobs</h1>
+      <button class="btn btn-primary"><i class="ti ti-plus"></i> Post a Job</button>
+    </div>
+    <div class="tabs">
+      <div class="tab active">All Jobs</div>
+      <div class="tab">Find Talent</div>
+      <div class="tab">Hiring Hackathons</div>
+      <div class="tab">Saved</div>
+    </div>
+
+    <div class="post-card" style="flex-direction:column; gap:10px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="avatar" style="background:#534AB7; width:40px; height:40px; font-size:13px; border-radius:8px;">UN</div>
+          <div>
+            <div style="font-size:15px; font-weight:600;">Senior Solidity Engineer</div>
+            <div style="font-size:12px; color:var(--text2);">Uniswap Labs · Remote</div>
+          </div>
+        </div>
+        <span style="font-size:13px; color:var(--accent); font-weight:600;">$180k–$240k</span>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="tag tag-solidity">Solidity</span>
+        <span class="tag tag-defi">DeFi</span>
+        <span class="tag tag-evm">EVM</span>
+        <span class="tag tag-security">Security</span>
+      </div>
+      <p style="font-size:13px; color:var(--text2); line-height:1.6;">Build and audit core protocol contracts. 4+ years Solidity required. Token compensation included.</p>
+      <div style="display:flex; gap:16px; font-size:12px; color:var(--text3);">
+        <span><i class="ti ti-clock"></i> Posted 2h ago</span>
+        <span><i class="ti ti-coin-bitcoin"></i> Token comp included</span>
+        <span><i class="ti ti-map-pin"></i> Remote</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;">Apply with Wallet ↗</button>
+    </div>
+
+    <div class="post-card" style="flex-direction:column; gap:10px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="avatar" style="background:#4CA3FF; width:40px; height:40px; font-size:13px; border-radius:8px;">SU</div>
+          <div>
+            <div style="font-size:15px; font-weight:600;">Move Language Developer</div>
+            <div style="font-size:12px; color:var(--text2);">Mysten Labs (SUI) · Remote</div>
+          </div>
+        </div>
+        <span style="font-size:13px; color:var(--accent); font-weight:600;">$160k–$220k</span>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="tag tag-l2">SUI</span>
+        <span class="tag tag-zk">Move</span>
+        <span class="tag tag-aa">Rust</span>
+      </div>
+      <p style="font-size:13px; color:var(--text2); line-height:1.6;">Build core dApps on SUI using Move. Experience with parallel execution and object-centric model preferred.</p>
+      <div style="display:flex; gap:16px; font-size:12px; color:var(--text3);">
+        <span><i class="ti ti-clock"></i> Posted 5h ago</span>
+        <span><i class="ti ti-coin-bitcoin"></i> SUI token comp</span>
+        <span><i class="ti ti-map-pin"></i> Remote</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;">Apply with Wallet ↗</button>
+    </div>
+
+    <div class="post-card" style="flex-direction:column; gap:10px;">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="avatar" style="background:#00C08B; width:40px; height:40px; font-size:13px; border-radius:8px;">NR</div>
+          <div>
+            <div style="font-size:15px; font-weight:600;">NEAR Protocol Rust Developer</div>
+            <div style="font-size:12px; color:var(--text2);">NEAR Foundation · Remote</div>
+          </div>
+        </div>
+        <span style="font-size:13px; color:var(--accent); font-weight:600;">$140k–$200k</span>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="tag tag-aa">Rust</span>
+        <span class="tag tag-zk">NEAR</span>
+        <span class="tag tag-defi">WebAssembly</span>
+      </div>
+      <p style="font-size:13px; color:var(--text2); line-height:1.6;">Develop smart contracts and tooling on NEAR. Strong Rust skills required. NEAR token compensation.</p>
+      <div style="display:flex; gap:16px; font-size:12px; color:var(--text3);">
+        <span><i class="ti ti-clock"></i> Posted 1d ago</span>
+        <span><i class="ti ti-coin-bitcoin"></i> NEAR token comp</span>
+        <span><i class="ti ti-map-pin"></i> Remote</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;">Apply with Wallet ↗</button>
+    </div>
+  </main>
+  <aside class="right-col">
+    <div class="widget-card">
+      <div class="widget-title">Post a Job</div>
+      <p style="font-size:13px; color:var(--text2); margin-bottom:12px;">Reach 8,400+ verified web3 builders. Token comp listings get 3x more applicants.</p>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;"><i class="ti ti-plus"></i> Post a Job</button>
+    </div>
+    <div class="widget-card">
+      <div class="widget-title">Top Skills in Demand</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px;"><span class="tag tag-solidity">Solidity</span><span style="color:var(--text3);">142 jobs</span></div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;"><span class="tag tag-aa">Rust</span><span style="color:var(--text3);">98 jobs</span></div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;"><span class="tag tag-zk">ZK / Circom</span><span style="color:var(--text3);">67 jobs</span></div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;"><span class="tag tag-l2">Move</span><span style="color:var(--text3);">43 jobs</span></div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;"><span class="tag tag-defi">DeFi</span><span style="color:var(--text3);">38 jobs</span></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

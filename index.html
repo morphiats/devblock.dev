@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevBlock — Web3 Builder Community</title>
+<link rel="stylesheet" href="assets/css/main.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body>
+
+<!-- LIVE COUNTER BAR -->
+<div class="counter-bar">
+  <span><i class="ti ti-users"></i> <strong id="online">312</strong> online</span>
+  <span><i class="ti ti-hammer"></i> <strong>4</strong> builds live</span>
+  <span><i class="ti ti-clock"></i> Gas Wars ends <strong id="timer">02:14:33</strong></span>
+  <span><i class="ti ti-package"></i> <strong>12</strong> bounties open</span>
+  <span class="live-badge"><i class="ti ti-trophy"></i> SUI Sprint LIVE</span>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <rect width="30" height="30" rx="7" fill="#1D9E75"/>
+      <path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.8-.6-1.4-1.5-1.4H10v2.8z" fill="white"/>
+      <rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/>
+    </svg>
+    <div class="logo-wordmark">
+      <span class="logo-block">Dev</span><span class="logo-dev">Block</span>
+    </div>
+  </div>
+  <div class="search-bar">
+    <i class="ti ti-search"></i>
+    <input type="text" placeholder="Search posts, devs, chains..."/>
+  </div>
+  <div class="topbar-right">
+    <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
+    <button class="btn">Sign in</button>
+    <button class="btn btn-primary"><i class="ti ti-wallet"></i> Connect Wallet</button>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <a href="index.html" class="nav-tab active"><i class="ti ti-home"></i><span>Feed</span></a>
+  <a href="pages/compete.html" class="nav-tab"><i class="ti ti-trophy"></i><span>Compete</span></a>
+  <a href="pages/hire.html" class="nav-tab"><i class="ti ti-briefcase"></i><span>Hire</span></a>
+  <a href="pages/airdrops.html" class="nav-tab"><i class="ti ti-parachute"></i><span>Airdrops</span></a>
+  <a href="pages/my-ai.html" class="nav-tab"><i class="ti ti-robot"></i><span>My AI</span></a>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+  <aside class="sidebar">
+    <a href="index.html" class="nav-item active"><i class="ti ti-flame"></i> Feed</a>
+    <a href="pages/compete.html" class="nav-item"><i class="ti ti-trophy"></i> Compete</a>
+    <a href="pages/hire.html" class="nav-item"><i class="ti ti-briefcase"></i> Hire</a>
+    <a href="pages/airdrops.html" class="nav-item"><i class="ti ti-parachute"></i> Airdrops</a>
+    <a href="pages/my-ai.html" class="nav-item"><i class="ti ti-robot"></i> My AI</a>
+    <div class="nav-section">Chains</div>
+    <a href="#" class="nav-item"><i class="ti ti-brand-ethereum"></i> Ethereum</a>
+    <a href="#" class="nav-item"><i class="ti ti-hexagon"></i> SUI</a>
+    <a href="#" class="nav-item"><i class="ti ti-circle-letter-n"></i> NEAR</a>
+    <a href="#" class="nav-item"><i class="ti ti-circle-letter-a"></i> Cardano</a>
+    <a href="#" class="nav-item"><i class="ti ti-circle-letter-s"></i> Solana</a>
+    <div class="nav-section">Topics</div>
+    <a href="#" class="nav-item"><i class="ti ti-file-code"></i> Smart Contracts</a>
+    <a href="#" class="nav-item"><i class="ti ti-shield-lock"></i> Security</a>
+    <a href="#" class="nav-item"><i class="ti ti-chart-candle"></i> DeFi</a>
+    <a href="#" class="nav-item"><i class="ti ti-eye-off"></i> ZK / Privacy</a>
+  </aside>
+
+  <main class="main">
+    <div class="tabs">
+      <div class="tab active">Trending</div>
+      <div class="tab">Latest</div>
+      <div class="tab">Top This Week</div>
+      <div class="tab">Questions</div>
+    </div>
+
+    <div class="post-compose">
+      <div class="avatar" style="background:#1D9E75;">0x</div>
+      <div class="compose-placeholder">Share something with the DevBlock community...</div>
+      <button class="btn btn-primary">Post ↗</button>
+    </div>
+
+    <div class="post-card">
+      <div class="vote-col">
+        <button class="vote-btn"><i class="ti ti-chevron-up"></i></button>
+        <div class="vote-count">247</div>
+        <button class="vote-btn"><i class="ti ti-chevron-down"></i></button>
+      </div>
+      <div class="post-body">
+        <div class="post-title">How I reduced gas costs by 40% using calldata compression + EIP-4844 blobs</div>
+        <div class="post-excerpt">After deploying our DEX aggregator on mainnet we noticed gas was eating into user margins. Here's the full breakdown of what we changed...</div>
+        <div class="post-meta">
+          <span class="tag tag-evm">EVM</span>
+          <span class="tag tag-l2">L2</span>
+          <span class="tag tag-defi">DeFi</span>
+          <div class="author-row">
+            <div class="avatar sm" style="background:#534AB7;">vk</div>
+            vkosuri.eth · 3h ago
+          </div>
+          <div class="post-info">
+            <span><i class="ti ti-message"></i> 38</span>
+            <span><i class="ti ti-eye"></i> 1.4k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="vote-col">
+        <button class="vote-btn"><i class="ti ti-chevron-up"></i></button>
+        <div class="vote-count">189</div>
+        <button class="vote-btn"><i class="ti ti-chevron-down"></i></button>
+      </div>
+      <div class="post-body">
+        <div class="post-title">ZK proof verification on-chain is finally cheap enough — here's what changed</div>
+        <div class="post-excerpt">With Groth16 verifier optimizations and updated precompile costs post-Pectra, verification costs dropped to under 80k gas...</div>
+        <div class="post-meta">
+          <span class="tag tag-zk">ZK</span>
+          <span class="tag tag-solidity">Solidity</span>
+          <div class="author-row">
+            <div class="avatar sm" style="background:#0F6E56;">am</div>
+            amb.eth · 6h ago
+          </div>
+          <div class="post-info">
+            <span><i class="ti ti-message"></i> 54</span>
+            <span><i class="ti ti-eye"></i> 2.1k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="vote-col">
+        <button class="vote-btn"><i class="ti ti-chevron-up"></i></button>
+        <div class="vote-count">142</div>
+        <button class="vote-btn"><i class="ti ti-chevron-down"></i></button>
+      </div>
+      <div class="post-body">
+        <div class="post-title">Account Abstraction (ERC-4337) in production: lessons from 6 months and 200k userOps</div>
+        <div class="post-excerpt">We shipped our first AA wallet product in January. Bundler landscape, paymaster gotchas, and edge cases nobody talks about...</div>
+        <div class="post-meta">
+          <span class="tag tag-aa">Account Abstraction</span>
+          <span class="tag tag-security">Security</span>
+          <div class="author-row">
+            <div class="avatar sm" style="background:#854F0B;">jl</div>
+            jlee.eth · 12h ago
+          </div>
+          <div class="post-info">
+            <span><i class="ti ti-message"></i> 71</span>
+            <span><i class="ti ti-eye"></i> 3.8k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="right-col">
+    <div class="widget-card">
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">8.4k</div><div class="stat-lbl">builders</div></div>
+        <div class="stat-box"><div class="stat-num">312</div><div class="stat-lbl">online</div></div>
+        <div class="stat-box"><div class="stat-num">41k</div><div class="stat-lbl">posts</div></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%"><i class="ti ti-wallet"></i> Join DevBlock</button>
+    </div>
+
+    <div class="widget-card ask-ai">
+      <div class="ask-ai-header">
+        <span class="widget-title">Ask AI</span>
+        <span class="ai-badge">DevBlock AI</span>
+      </div>
+      <textarea id="aiQ" placeholder="e.g. What is account abstraction?"></textarea>
+      <button class="btn btn-primary" style="width:100%" onclick="askAI()">Ask ↗</button>
+      <div id="aiLoading" class="ai-loading" style="display:none">Thinking...</div>
+      <div id="aiAnswer" class="ai-answer" style="display:none"></div>
+    </div>
+
+    <div class="widget-card">
+      <div class="widget-title">Trending Tags</div>
+      <div class="trending-tag"><span class="tag tag-zk">ZK / Privacy</span><span>214 posts</span></div>
+      <div class="trending-tag"><span class="tag tag-aa">Account Abstraction</span><span>187 posts</span></div>
+      <div class="trending-tag"><span class="tag tag-l2">L2 / Rollups</span><span>163 posts</span></div>
+      <div class="trending-tag"><span class="tag tag-defi">DeFi</span><span>141 posts</span></div>
+      <div class="trending-tag"><span class="tag tag-security">Security</span><span>98 posts</span></div>
+    </div>
+  </aside>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/ai.js"></script>
+</body>
+</html>
