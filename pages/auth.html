@@ -9,26 +9,13 @@
 <style>
 .auth-wrap { max-width: 420px; margin: 60px auto; padding: 0 16px; }
 .auth-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
-.auth-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 24px; }
 .auth-title { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 6px; }
 .auth-sub { font-size: 13px; color: var(--text2); text-align: center; margin-bottom: 24px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 .form-label { font-size: 13px; font-weight: 500; color: var(--text2); }
-.form-input {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  color: var(--text);
-  font-size: 14px;
-  font-family: inherit;
-  outline: none;
-  width: 100%;
-}
+.form-input { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 14px; font-family: inherit; outline: none; width: 100%; box-sizing: border-box; }
 .form-input:focus { border-color: var(--accent); }
 .auth-btn { width: 100%; justify-content: center; padding: 12px; font-size: 14px; margin-top: 8px; }
-.auth-divider { display: flex; align-items: center; gap: 10px; margin: 20px 0; color: var(--text3); font-size: 12px; }
-.auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .auth-switch { text-align: center; font-size: 13px; color: var(--text2); margin-top: 16px; }
 .auth-switch span { color: var(--accent); cursor: pointer; font-weight: 500; }
 .auth-error { background: #FCEBEB; color: #A32D2D; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 14px; display: none; }
@@ -48,18 +35,14 @@
 
 <div class="auth-wrap">
   <div class="auth-card">
-    <div class="auth-logo">
-      <svg width="36" height="36" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="7" fill="#1D9E75"/><path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.8-.6-1.4-1.5-1.4H10v2.8z" fill="white"/><rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/></svg>
-    </div>
-
     <div id="signupView">
-      <div class="auth-title">Join DevBlock</div>
+      <div class="auth-title">Join DevBlock 🚀</div>
       <div class="auth-sub">The web3 builder community</div>
       <div class="auth-error" id="signupError"></div>
       <div class="auth-success" id="signupSuccess"></div>
       <div class="form-group">
         <label class="form-label">Username</label>
-        <input class="form-input" id="signupUsername" type="text" placeholder="yourname.eth"/>
+        <input class="form-input" id="signupUsername" type="text" placeholder="yourname or yourname.eth"/>
       </div>
       <div class="form-group">
         <label class="form-label">Email</label>
@@ -76,7 +59,7 @@
     </div>
 
     <div id="signinView" style="display:none">
-      <div class="auth-title">Welcome back</div>
+      <div class="auth-title">Welcome back 👋</div>
       <div class="auth-sub">Sign in to DevBlock</div>
       <div class="auth-error" id="signinError"></div>
       <div class="form-group">
@@ -95,10 +78,13 @@
   </div>
 </div>
 
-<script type="module">
-import { supabase } from '../assets/js/supabase.js'
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL = 'https://sjplhedryfpztecxwztb.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNqcGxoZWRyeWZwenRlY3h3enRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1NTY3ODMsImV4cCI6MjA5NzEzMjc4M30.4sYA3s618LVb2En9L_emj5Nbu9wikvy3WjOK2Y4pQJA'
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-window.signUp = async function() {
+async function signUp() {
   const username = document.getElementById('signupUsername').value.trim()
   const email = document.getElementById('signupEmail').value.trim()
   const password = document.getElementById('signupPassword').value
@@ -118,21 +104,15 @@ window.signUp = async function() {
     return
   }
 
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: { data: { username, display_name: username } }
-  })
-
+  const { data, error } = await db.auth.signUp({ email, password })
   if (error) {
     errEl.textContent = error.message
     errEl.style.display = 'block'
     return
   }
 
-  // Create user profile
   if (data.user) {
-    await supabase.from('users').insert({
+    await db.from('users').insert({
       id: data.user.id,
       username,
       display_name: username
@@ -143,14 +123,13 @@ window.signUp = async function() {
   sucEl.style.display = 'block'
 }
 
-window.signIn = async function() {
+async function signIn() {
   const email = document.getElementById('signinEmail').value.trim()
   const password = document.getElementById('signinPassword').value
   const errEl = document.getElementById('signinError')
   errEl.style.display = 'none'
 
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-
+  const { data, error } = await db.auth.signInWithPassword({ email, password })
   if (error) {
     errEl.textContent = error.message
     errEl.style.display = 'block'
@@ -160,7 +139,7 @@ window.signIn = async function() {
   window.location.href = '../index.html'
 }
 
-window.toggleView = function() {
+function toggleView() {
   const signup = document.getElementById('signupView')
   const signin = document.getElementById('signinView')
   signup.style.display = signup.style.display === 'none' ? 'block' : 'none'
