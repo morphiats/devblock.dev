@@ -1,43 +1,36 @@
-import { supabase } from './supabase.js'
+window.addEventListener('DOMContentLoaded', async function() {
+  if (!window.supabaseClient) return
 
-async function initAuth() {
-  const { data: { session } } = await supabase.auth.getSession()
-
-  const signinBtn = document.querySelector('a.btn[href*="auth"]') || document.querySelector('.btn:not(.btn-primary)')
-  const connectBtn = document.querySelector('.btn-primary')
+  const { data: { session } } = await window.supabaseClient.auth.getSession()
 
   if (session?.user) {
-    // Get user profile
-    const { data: profile } = await supabase
+    window.currentUser = session.user
+
+    const { data: profile } = await window.supabaseClient
       .from('users')
       .select('*')
       .eq('id', session.user.id)
       .single()
 
+    window.currentProfile = profile
     const username = profile?.username || session.user.email.split('@')[0]
+    const initials = username.slice(0,2).toUpperCase()
 
-    // Replace sign in button with user info
-    if (signinBtn) {
-      signinBtn.outerHTML = `
+    const topbarRight = document.getElementById('topbarRight')
+    if (topbarRight) {
+      topbarRight.innerHTML = `
+        <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
         <div style="display:flex; align-items:center; gap:8px;">
-          <div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px; cursor:pointer;" onclick="window.location.href='/pages/profile.html'">
-            ${username.slice(0,2).toUpperCase()}
-          </div>
+          <div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px;">${initials}</div>
           <span style="font-size:13px; color:var(--text2);">${username}</span>
           <button class="btn" onclick="signOut()" style="font-size:12px; padding:4px 10px;">Sign out</button>
         </div>
       `
     }
-
-    // Store session globally
-    window.currentUser = session.user
-    window.currentProfile = profile
   }
-}
+})
 
 window.signOut = async function() {
-  await supabase.auth.signOut()
+  await window.supabaseClient.auth.signOut()
   window.location.reload()
 }
-
-initAuth()
