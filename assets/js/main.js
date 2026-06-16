@@ -71,3 +71,13 @@ document.querySelectorAll('.nav-item, .nav-tab').forEach(item => {
     item.classList.add('active');
   });
 });
+
+window.openPostModal = function() {
+  const modal = document.getElementById('postModal')
+  if (modal) modal.style.display = 'flex'
+}
+
+window.closePostModal = function() {
+  const modal = document.getElementById('postModal')
+  if (modal) modal.style.display = 'none'
+}
