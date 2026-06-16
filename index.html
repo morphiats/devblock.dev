@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<!-- LIVE COUNTER BAR -->
+<!-- COUNTER BAR -->
 <div class="counter-bar">
   <span><i class="ti ti-users"></i> <strong id="online">312</strong> online</span>
   <span><i class="ti ti-hammer"></i> <strong>4</strong> builds live</span>
@@ -34,10 +34,24 @@
     <i class="ti ti-search"></i>
     <input type="text" placeholder="Search posts, devs, chains..."/>
   </div>
-  <div class="topbar-right">
+  <div class="topbar-right" id="topbarRight">
     <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
     <a href="pages/auth.html" class="btn">Sign in</a>
     <button class="btn btn-primary"><i class="ti ti-wallet"></i> Connect Wallet</button>
+  </div>
+</div>
+
+<!-- POST MODAL -->
+<div id="postModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:999; align-items:center; justify-content:center;">
+  <div style="background:var(--bg2); border:1px solid var(--border); border-radius:16px; padding:24px; width:100%; max-width:560px; margin:16px;">
+    <div style="font-size:16px; font-weight:700; margin-bottom:16px;">Create Post</div>
+    <input id="postTitle" placeholder="Post title..." style="width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:14px; font-family:inherit; outline:none; margin-bottom:10px; box-sizing:border-box;"/>
+    <textarea id="postExcerpt" placeholder="What did you build or learn?" rows="3" style="width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:14px; font-family:inherit; outline:none; resize:none; margin-bottom:10px; box-sizing:border-box;"></textarea>
+    <input id="postTags" placeholder="Tags: solidity, defi, zk" style="width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:14px; font-family:inherit; outline:none; margin-bottom:16px; box-sizing:border-box;"/>
+    <div style="display:flex; gap:8px; justify-content:flex-end;">
+      <button class="btn" onclick="closePostModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="createPost()">Post ↗</button>
+    </div>
   </div>
 </div>
 
@@ -79,12 +93,16 @@
       <div class="tab">Questions</div>
     </div>
 
-    <div class="post-compose">
-      <div class="avatar" style="background:#1D9E75;">0x</div>
-      <div class="compose-placeholder" onclick="openPostModal()" style="cursor:pointer;">Share something with the DevBlock community...</div>
-      <button class="btn btn-primary">Post ↗</button>
+    <div class="post-compose" onclick="openPostModal()" style="cursor:pointer;">
+      <div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px;">0x</div>
+      <div class="compose-placeholder">Share something with the DevBlock community...</div>
+      <button class="btn btn-primary" onclick="event.stopPropagation(); openPostModal()">Post ↗</button>
     </div>
 
+    <!-- REAL POSTS FROM DB -->
+    <div id="postFeed"></div>
+
+    <!-- STATIC SAMPLE POSTS -->
     <div class="post-card">
       <div class="vote-col">
         <button class="vote-btn"><i class="ti ti-chevron-up"></i></button>
@@ -93,7 +111,7 @@
       </div>
       <div class="post-body">
         <div class="post-title">How I reduced gas costs by 40% using calldata compression + EIP-4844 blobs</div>
-        <div class="post-excerpt">After deploying our DEX aggregator on mainnet we noticed gas was eating into user margins. Here's the full breakdown of what we changed...</div>
+        <div class="post-excerpt">After deploying our DEX aggregator on mainnet we noticed gas was eating into user margins. Here's the full breakdown...</div>
         <div class="post-meta">
           <span class="tag tag-evm">EVM</span>
           <span class="tag tag-l2">L2</span>
@@ -192,7 +210,8 @@
 </div>
 
 <script src="assets/js/main.js"></script>
-<script src="assets/js/ai.js"></script>
+<script type="module" src="assets/js/ai.js"></script>
 <script type="module" src="assets/js/auth-state.js"></script>
+<script type="module" src="assets/js/posts.js"></script>
 </body>
 </html>
