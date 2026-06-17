@@ -7,163 +7,74 @@
 <link rel="stylesheet" href="../assets/css/main.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
 <style>
-.chat-wrap { display:flex; flex-direction:column; gap:12px; max-height:420px; overflow-y:auto; padding:4px 0; }
-.chat-msg { display:flex; gap:10px; align-items:flex-start; }
-.chat-msg.user { flex-direction:row-reverse; }
-.chat-bubble { max-width:80%; padding:10px 14px; border-radius:12px; font-size:13px; line-height:1.6; }
-.chat-msg.ai .chat-bubble { background:var(--bg3); color:var(--text); border-bottom-left-radius:4px; }
-.chat-msg.user .chat-bubble { background:var(--accent); color:#fff; border-bottom-right-radius:4px; }
-.chat-input-row { display:flex; gap:8px; margin-top:12px; }
-.chat-input-row input { flex:1; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:13px; outline:none; font-family:inherit; }
-.chat-input-row input:focus { border-color:var(--accent); }
-.skill-bar { background:var(--bg3); border-radius:20px; height:6px; flex:1; overflow:hidden; }
-.skill-fill { height:100%; border-radius:20px; background:var(--accent); }
+.coming-soon-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;background:var(--bg2);border:1px solid var(--border);border-radius:12px;}
+.coming-soon-icon{font-size:64px;margin-bottom:20px;}
+.coming-soon-title{font-size:24px;font-weight:700;margin-bottom:10px;}
+.coming-soon-sub{font-size:14px;color:var(--text2);line-height:1.6;max-width:400px;margin-bottom:24px;}
+.feature-list{display:flex;flex-direction:column;gap:10px;text-align:left;width:100%;max-width:360px;}
+.feature-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);background:var(--bg3);padding:10px 14px;border-radius:8px;}
+.feature-item i{color:var(--accent);font-size:18px;}
 </style>
 </head>
 <body>
 <div class="counter-bar">
-  <span><i class="ti ti-robot"></i> Your personal web3 AI</span>
   <span><i class="ti ti-users"></i> <strong id="online">312</strong> online</span>
+  <span><i class="ti ti-robot"></i> AI coming soon</span>
 </div>
 <div class="topbar">
   <a href="../index.html" class="logo">
     <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="7" fill="#1D9E75"/><path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.8-.6-1.4-1.5-1.4H10v2.8z" fill="white"/><rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/></svg>
     <div class="logo-wordmark"><span class="logo-block">Dev</span><span class="logo-dev">Block</span></div>
   </a>
-  <div class="search-bar"><i class="ti ti-search"></i><input type="text" placeholder="Search your build history..."/></div>
-  <div class="topbar-right">
+  <div class="search-bar"><i class="ti ti-search"></i><input type="text" placeholder="Search..."/></div>
+  <div class="topbar-right" id="topbarRight">
     <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
-    <button class="btn btn-primary"><i class="ti ti-wallet"></i> Connect Wallet</button>
+    <a href="auth.html" class="btn">Sign in</a>
+    <button class="btn btn-primary" onclick="connectWallet()"><i class="ti ti-wallet"></i> Connect Wallet</button>
   </div>
 </div>
 <nav class="mobile-nav">
   <a href="../index.html" class="nav-tab"><i class="ti ti-home"></i><span>Feed</span></a>
   <a href="compete.html" class="nav-tab"><i class="ti ti-trophy"></i><span>Compete</span></a>
-  <a href="hire.html" class="nav-tab"><i class="ti ti-briefcase"></i><span>Hire</span></a>
-  <a href="airdrops.html" class="nav-tab"><i class="ti ti-parachute"></i><span>Airdrops</span></a>
+  <a href="news.html" class="nav-tab"><i class="ti ti-news"></i><span>News</span></a>
+  <a href="inbox.html" class="nav-tab"><i class="ti ti-message"></i><span>Inbox</span></a>
   <a href="my-ai.html" class="nav-tab active"><i class="ti ti-robot"></i><span>My AI</span></a>
 </nav>
 <div class="layout">
   <aside class="sidebar">
     <a href="../index.html" class="nav-item"><i class="ti ti-home"></i> Feed</a>
     <a href="compete.html" class="nav-item"><i class="ti ti-trophy"></i> Compete</a>
+    <a href="news.html" class="nav-item"><i class="ti ti-news"></i> News</a>
     <a href="hire.html" class="nav-item"><i class="ti ti-briefcase"></i> Hire</a>
     <a href="airdrops.html" class="nav-item"><i class="ti ti-parachute"></i> Airdrops</a>
+    <a href="inbox.html" class="nav-item"><i class="ti ti-message"></i> Inbox</a>
     <a href="my-ai.html" class="nav-item active"><i class="ti ti-robot"></i> My AI</a>
-    <div class="nav-section">My AI Tools</div>
-    <a href="#" class="nav-item"><i class="ti ti-id-badge"></i> My Portfolio</a>
-    <a href="#" class="nav-item"><i class="ti ti-chart-bar"></i> Skill Map</a>
-    <a href="#" class="nav-item"><i class="ti ti-users"></i> Team Match</a>
-    <a href="#" class="nav-item"><i class="ti ti-history"></i> Build History</a>
   </aside>
   <main class="main">
-    <h1 style="font-size:20px; font-weight:700; margin-bottom:4px;">My DevBlock AI</h1>
-    <div class="tabs">
-      <div class="tab active">Chat</div>
-      <div class="tab">Portfolio</div>
-      <div class="tab">Skill Map</div>
-      <div class="tab">Team Match</div>
-    </div>
-
-    <div class="widget-card">
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
-        <div style="width:42px; height:42px; background:var(--accent); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px;">🤖</div>
-        <div>
-          <div style="font-size:15px; font-weight:600;">DevBlock AI</div>
-          <div style="font-size:12px; color:var(--text2);">Your personal web3 copilot · Wallet-bound · Always learning</div>
-        </div>
-        <span class="ai-badge" style="margin-left:auto;">ONLINE</span>
-      </div>
-
-      <div class="chat-wrap" id="chatWrap">
-        <div class="chat-msg ai">
-          <div class="avatar sm" style="background:var(--accent);">AI</div>
-          <div class="chat-bubble">Hey! I'm your DevBlock AI. Ask me anything about web3 dev — Solidity, ZK proofs, SUI Move, NEAR Rust, DeFi, account abstraction, or anything else you're building. What are you working on?</div>
-        </div>
-      </div>
-
-      <div class="chat-input-row">
-        <input type="text" id="chatInput" placeholder="Ask your AI anything..." onkeydown="if(event.key==='Enter') sendChat()"/>
-        <button class="btn btn-primary" onclick="sendChat()"><i class="ti ti-send"></i></button>
-      </div>
-    </div>
-
-    <div class="widget-card">
-      <div class="widget-title">Skill Map</div>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-          <span style="width:120px; color:var(--text2);">Solidity</span>
-          <div class="skill-bar"><div class="skill-fill" style="width:80%;"></div></div>
-          <span style="color:var(--accent); font-weight:600;">80%</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-          <span style="width:120px; color:var(--text2);">DeFi</span>
-          <div class="skill-bar"><div class="skill-fill" style="width:65%;"></div></div>
-          <span style="color:var(--accent); font-weight:600;">65%</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-          <span style="width:120px; color:var(--text2);">ZK Proofs</span>
-          <div class="skill-bar"><div class="skill-fill" style="width:40%;"></div></div>
-          <span style="color:var(--accent); font-weight:600;">40%</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-          <span style="width:120px; color:var(--text2);">Rust / NEAR</span>
-          <div class="skill-bar"><div class="skill-fill" style="width:30%;"></div></div>
-          <span style="color:var(--accent); font-weight:600;">30%</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px;">
-          <span style="width:120px; color:var(--text2);">Move / SUI</span>
-          <div class="skill-bar"><div class="skill-fill" style="width:20%;"></div></div>
-          <span style="color:var(--accent); font-weight:600;">20%</span>
-        </div>
+    <div class="coming-soon-wrap">
+      <div class="coming-soon-icon">🤖</div>
+      <div class="coming-soon-title">DevBlock AI — Coming Soon</div>
+      <div class="coming-soon-sub">Your personal web3 copilot is being built. It will know your stack, your builds, and help you ship faster.</div>
+      <div class="feature-list">
+        <div class="feature-item"><i class="ti ti-brain"></i> Personal AI trained on your posts and builds</div>
+        <div class="feature-item"><i class="ti ti-code"></i> Smart contract reviewer and gas optimizer</div>
+        <div class="feature-item"><i class="ti ti-users"></i> Team matchmaker for hackathons</div>
+        <div class="feature-item"><i class="ti ti-briefcase"></i> Auto-generates your dev portfolio</div>
+        <div class="feature-item"><i class="ti ti-wallet"></i> Wallet-bound — you own your AI</div>
       </div>
     </div>
   </main>
   <aside class="right-col">
     <div class="widget-card">
-      <div class="widget-title">My Stats</div>
-      <div class="stat-row">
-        <div class="stat-box"><div class="stat-num">0</div><div class="stat-lbl">posts</div></div>
-        <div class="stat-box"><div class="stat-num">0</div><div class="stat-lbl">wins</div></div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-box"><div class="stat-num">0</div><div class="stat-lbl">rep</div></div>
-        <div class="stat-box"><div class="stat-num">0</div><div class="stat-lbl">earned</div></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%; justify-content:center;"><i class="ti ti-wallet"></i> Connect Wallet</button>
-    </div>
-    <div class="widget-card">
-      <div class="widget-title">Share My AI</div>
-      <p style="font-size:13px; color:var(--text2); margin-bottom:12px;">Let recruiters and teammates ask your AI about your skills and experience.</p>
-      <button class="btn" style="width:100%; justify-content:center;"><i class="ti ti-share"></i> Share Profile</button>
+      <div class="widget-title">📊 Live Prices</div>
+      <div id="priceWidget"><div style="font-size:13px;color:var(--text3);">Loading...</div></div>
     </div>
   </aside>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../assets/js/supabase.js"></script>
 <script src="../assets/js/main.js"></script>
-<script>
-async function sendChat() {
-  const input = document.getElementById('chatInput');
-  const wrap = document.getElementById('chatWrap');
-  const msg = input.value.trim();
-  if (!msg) return;
-  input.value = '';
-  wrap.innerHTML += `<div class="chat-msg user"><div class="avatar sm" style="background:#534AB7;">me</div><div class="chat-bubble">${msg}</div></div>`;
-  wrap.innerHTML += `<div class="chat-msg ai" id="typing"><div class="avatar sm" style="background:var(--accent);">AI</div><div class="chat-bubble" style="color:var(--text3);">Thinking...</div></div>`;
-  wrap.scrollTop = wrap.scrollHeight;
-  try {
-    const res = await fetch('/api/ask', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: msg })
-    });
-    const data = await res.json();
-    const text = data.answer || 'No answer returned.';
-    document.getElementById('typing').outerHTML = `<div class="chat-msg ai"><div class="avatar sm" style="background:var(--accent);">AI</div><div class="chat-bubble">${text}</div></div>`;
-  } catch(e) {
-    document.getElementById('typing').outerHTML = `<div class="chat-msg ai"><div class="avatar sm" style="background:var(--accent);">AI</div><div class="chat-bubble">Something went wrong. Try again.</div></div>`;
-  }
-  wrap.scrollTop = wrap.scrollHeight;
-}
-</script>
+<script src="../assets/js/auth-state.js"></script>
+<script src="../assets/js/prices.js"></script>
 </body>
 </html>
