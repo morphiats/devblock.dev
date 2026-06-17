@@ -1,4 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compete — DevBlock</title>
+  <link rel="stylesheet" href="../assets/css/main.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <rect width="30" height="30" rx="7" fill="#1D9E75"/>
+      <path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.9-.6-1.4-1.5-1.4H10v2.8z" fill="white"/>
+      <rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/>
+    </svg>
+    <div class="logo-wordmark">
+      <span class="logo-block">Dev</span><span class="logo-dev">Block</span>
+    </div>
+  </div>
+  <div class="search-bar">
+    <i class="ti ti-search"></i>
+    <input type="text" placeholder="Search posts, devs, chains..."/>
+  </div>
+  <div class="topbar-right" id="topbarRight">
+    <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
+    <a href="auth.html" class="btn">Sign in</a>
+    <button class="btn btn-primary" onclick="connectWallet()"><i class="ti ti-wallet"></i> Connect Wallet</button>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <a href="../index.html" class="nav-tab"><i class="ti ti-home"></i><span>Feed</span></a>
+  <a href="compete.html" class="nav-tab active"><i class="ti ti-trophy"></i><span>Compete</span></a>
+  <a href="news.html" class="nav-tab"><i class="ti ti-news"></i><span>News</span></a>
+  <a href="hire.html" class="nav-tab"><i class="ti ti-briefcase"></i><span>Hire</span></a>
+  <a href="airdrops.html" class="nav-tab"><i class="ti ti-parachute"></i><span>Airdrops</span></a>
+  <a href="my-ai.html" class="nav-tab"><i class="ti ti-robot"></i><span>My AI</span></a>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+  <aside class="sidebar">
+    <a href="../index.html" class="nav-item"><i class="ti ti-flame"></i> Feed</a>
+    <a href="compete.html" class="nav-item active"><i class="ti ti-trophy"></i> Compete</a>
+    <a href="news.html" class="nav-item"><i class="ti ti-news"></i> News</a>
+    <a href="hire.html" class="nav-item"><i class="ti ti-briefcase"></i> Hire</a>
+    <a href="airdrops.html" class="nav-item"><i class="ti ti-parachute"></i> Airdrops</a>
+    <a href="inbox.html" class="nav-item"><i class="ti ti-message"></i> Inbox</a>
+    <a href="my-ai.html" class="nav-item"><i class="ti ti-robot"></i> My AI</a>
+    <div class="nav-section">Active Competitions</div>
+    <a href="#" class="nav-item"><i class="ti ti-trophy"></i> Gas Wars</a>
+    <a href="#" class="nav-item"><i class="ti ti-trophy"></i> SUI Sprint</a>
+    <a href="#" class="nav-item"><i class="ti ti-trophy"></i> ZK Challenge</a>
+  </aside>
+
+  <main class="main">
+    <div class="tabs">
+      <div class="tab active">Live Competitions</div>
+      <div class="tab">Past Competitions</div>
+      <div class="tab">Leaderboard</div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-body">
+        <div class="post-title">⚡ Gas Wars — Reduce gas costs on Ethereum</div>
+        <div class="post-excerpt">Optimize your smart contract to use the least gas. Prize pool: $5,000 USDC</div>
+        <div class="post-meta">
+          <span class="tag tag-evm">EVM</span>
+          <button class="btn btn-primary">Join Competition</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-body">
+        <div class="post-title">🌊 SUI Sprint — Build on SUI</div>
+        <div class="post-excerpt">Create the best DApp on SUI blockchain. Prize pool: $10,000 USDC</div>
+        <div class="post-meta">
+          <span class="tag tag-l2">L2</span>
+          <button class="btn btn-primary">Join Competition</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="right-col">
+    <div class="widget-card">
+      <div class="widget-title">🏆 Your Rankings</div>
+      <div style="font-size:13px; color:var(--text3);">Sign in to see your competition rankings</div>
+    </div>
+  </aside>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../assets/js/supabase.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/auth-state.js"></script>
 <script src="../assets/js/wallet.js"></script>
+<script src="../assets/js/prices.js"></script>
+
 </body>
 </html>
