@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', async function() {
         topbarRight.innerHTML = `
           <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
           <div style="display:flex; align-items:center; gap:8px;">
-            <div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px;">${initials}</div>
+            <a href="/pages/profile.html" style="text-decoration:none;"><div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px; cursor:pointer;">${initials}</div></a>
             <span style="font-size:13px; color:var(--text2);">${username}</span>
             <button class="btn" onclick="signOut()" style="font-size:12px; padding:4px 10px;">Sign out</button>
           </div>
