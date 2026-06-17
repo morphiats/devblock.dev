@@ -151,18 +151,13 @@ async function sendChat() {
   wrap.innerHTML += `<div class="chat-msg ai" id="typing"><div class="avatar sm" style="background:var(--accent);">AI</div><div class="chat-bubble" style="color:var(--text3);">Thinking...</div></div>`;
   wrap.scrollTop = wrap.scrollHeight;
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1000,
-        system: 'You are the DevBlock personal AI — a senior web3 developer copilot. Answer questions about smart contracts, Solidity, ZK proofs, DeFi, L2s, SUI Move, NEAR Rust, Cardano Plutus, account abstraction, and blockchain development. Be concise, technical, and practical. Max 4 sentences.',
-        messages: [{ role: 'user', content: msg }]
-      })
+      body: JSON.stringify({ question: msg })
     });
     const data = await res.json();
-    const text = data.content?.find(b => b.type === 'text')?.text || 'No answer returned.';
+    const text = data.answer || 'No answer returned.';
     document.getElementById('typing').outerHTML = `<div class="chat-msg ai"><div class="avatar sm" style="background:var(--accent);">AI</div><div class="chat-bubble">${text}</div></div>`;
   } catch(e) {
     document.getElementById('typing').outerHTML = `<div class="chat-msg ai"><div class="avatar sm" style="background:var(--accent);">AI</div><div class="chat-bubble">Something went wrong. Try again.</div></div>`;
