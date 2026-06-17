@@ -228,3 +228,10 @@ a { text-decoration: none; color: inherit; }
   .counter-bar span:nth-child(n+3) { display: none; }
   .search-bar { max-width: none; }
 }
+
+/* PRICES */
+.price-row { display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.price-row:last-child { border-bottom:none; }
+.price-symbol { font-weight:600; width:48px; }
+.price-value { font-weight:500; }
+.price-change { font-size:11px; font-weight:600; }
