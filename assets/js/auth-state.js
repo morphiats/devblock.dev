@@ -1,9 +1,5 @@
 window.addEventListener('DOMContentLoaded', async function() {
-  // Wait for supabase to load
-  if (!window.supabaseClient) {
-    console.log('No supabase client')
-    return
-  }
+  if (!window.supabaseClient) return
 
   try {
     const { data, error } = await window.supabaseClient.auth.getSession()
@@ -27,14 +23,13 @@ window.addEventListener('DOMContentLoaded', async function() {
         topbarRight.innerHTML = `
           <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
           <div style="display:flex; align-items:center; gap:8px;">
-            <a href="/pages/profile.html" style="text-decoration:none;"><div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px; cursor:pointer;">${initials}</div></a>
+            <a href="/pages/profile.html"><div class="avatar" style="background:#1D9E75; width:28px; height:28px; font-size:11px; cursor:pointer;">${initials}</div></a>
             <span style="font-size:13px; color:var(--text2);">${username}</span>
             <button class="btn" onclick="signOut()" style="font-size:12px; padding:4px 10px;">Sign out</button>
           </div>
+          <button class="btn btn-primary" onclick="connectWallet()" id="walletBtn"><i class="ti ti-wallet"></i> Connect Wallet</button>
         `
       }
-    } else {
-      console.log('No active session - user not logged in')
     }
   } catch(e) {
     console.error('Auth error:', e)
@@ -43,5 +38,5 @@ window.addEventListener('DOMContentLoaded', async function() {
 
 window.signOut = async function() {
   await window.supabaseClient.auth.signOut()
-  window.location.href = '/index.html'
+  window.location.reload()
 }
