@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Profile — DevBlock</title>
+<link rel="stylesheet" href="../assets/css/main.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+.profile-header{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px;}
+.profile-cover{height:120px;background:linear-gradient(135deg,#1D9E75,#0F6E56);border-radius:10px;margin-bottom:-40px;}
+.profile-avatar-wrap{display:flex;align-items:flex-end;justify-content:space-between;padding:0 8px;}
+.profile-avatar-big{width:80px;height:80px;border-radius:50%;border:3px solid var(--bg2);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;margin-top:-40px;}
+.profile-name{font-size:20px;font-weight:700;margin-bottom:4px;}
+.profile-username{font-size:13px;color:var(--text2);margin-bottom:8px;}
+.profile-bio{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px;}
+.profile-stats{display:flex;gap:20px;font-size:13px;}
+.profile-stat{text-align:center;}
+.profile-stat-num{font-size:18px;font-weight:700;color:var(--accent);}
+.profile-stat-lbl{font-size:11px;color:var(--text3);}
+.edit-form{display:none;flex-direction:column;gap:10px;margin-top:16px;}
+.edit-input{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;}
+.edit-input:focus{border-color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="counter-bar">
+  <span><i class="ti ti-users"></i> <strong id="online">312</strong> online</span>
+</div>
+<div class="topbar">
+  <a href="../index.html" class="logo">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="7" fill="#1D9E75"/><path d="M8 10h6.5c1.8 0 3 1 3 2.6 0 1-.5 1.8-1.3 2.2 1 .3 1.8 1.2 1.8 2.4 0 1.8-1.3 2.8-3.3 2.8H8V10zm2 4.2h4c.8 0 1.4-.5 1.4-1.3 0-.8-.6-1.3-1.4-1.3H10v2.6zm0 4.2h4.3c.9 0 1.5-.5 1.5-1.4 0-.8-.6-1.4-1.5-1.4H10v2.8z" fill="white"/><rect x="20" y="10" width="2" height="10" rx="1" fill="white" opacity="0.6"/></svg>
+    <div class="logo-wordmark"><span class="logo-block">Dev</span><span class="logo-dev">Block</span></div>
+  </a>
+  <div class="search-bar"><i class="ti ti-search"></i><input type="text" placeholder="Search..."/></div>
+  <div class="topbar-right" id="topbarRight">
+    <button class="btn theme-toggle" onclick="cycleTheme()"><i class="ti ti-palette"></i></button>
+    <a href="auth.html" class="btn">Sign in</a>
+    <button class="btn btn-primary"><i class="ti ti-wallet"></i> Connect Wallet</button>
+  </div>
+</div>
+<nav class="mobile-nav">
+  <a href="../index.html" class="nav-tab"><i class="ti ti-home"></i><span>Feed</span></a>
+  <a href="compete.html" class="nav-tab"><i class="ti ti-trophy"></i><span>Compete</span></a>
+  <a href="news.html" class="nav-tab"><i class="ti ti-news"></i><span>News</span></a>
+  <a href="inbox.html" class="nav-tab"><i class="ti ti-message"></i><span>Inbox</span></a>
+  <a href="my-ai.html" class="nav-tab"><i class="ti ti-robot"></i><span>My AI</span></a>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <a href="../index.html" class="nav-item"><i class="ti ti-home"></i> Feed</a>
+    <a href="compete.html" class="nav-item"><i class="ti ti-trophy"></i> Compete</a>
+    <a href="news.html" class="nav-item"><i class="ti ti-news"></i> News</a>
+    <a href="hire.html" class="nav-item"><i class="ti ti-briefcase"></i> Hire</a>
+    <a href="airdrops.html" class="nav-item"><i class="ti ti-parachute"></i> Airdrops</a>
+    <a href="inbox.html" class="nav-item"><i class="ti ti-message"></i> Inbox</a>
+    <a href="my-ai.html" class="nav-item"><i class="ti ti-robot"></i> My AI</a>
+  </aside>
+  <main class="main">
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+      <div class="profile-cover"></div>
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar-big" id="profileAvatar" style="background:#1D9E75;">??</div>
+        <div style="display:flex;gap:8px;padding-bottom:8px;">
+          <button class="btn" id="editBtn" onclick="toggleEdit()"><i class="ti ti-edit"></i> Edit Profile</button>
+          <button class="btn btn-primary" id="followBtn" style="display:none;" onclick="followUser()"><i class="ti ti-user-plus"></i> Follow</button>
+          <button class="btn" onclick="window.location.href='inbox.html'" id="msgBtn" style="display:none;"><i class="ti ti-message"></i> Message</button>
+        </div>
+      </div>
+      <div style="padding:8px;">
+        <div class="profile-name" id="profileName">Loading...</div>
+        <div class="profile-username" id="profileUsername">@...</div>
+        <div class="profile-bio" id="profileBio"></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;" id="profileLinks"></div>
+        <div class="profile-stats">
+          <div class="profile-stat"><div class="profile-stat-num" id="statPosts">0</div><div class="profile-stat-lbl">posts</div></div>
+          <div class="profile-stat"><div class="profile-stat-num" id="statVotes">0</div><div class="profile-stat-lbl">votes earned</div></div>
+          <div class="profile-stat"><div class="profile-stat-num" id="statFollowers">0</div><div class="profile-stat-lbl">followers</div></div>
+          <div class="profile-stat"><div class="profile-stat-num" id="statFollowing">0</div><div class="profile-stat-lbl">following</div></div>
+        </div>
+      </div>
+
+      <!-- EDIT FORM -->
+      <div class="edit-form" id="editForm">
+        <input class="edit-input" id="editDisplayName" placeholder="Display name"/>
+        <input class="edit-input" id="editBio" placeholder="Bio — what do you build?"/>
+        <input class="edit-input" id="editWallet" placeholder="Wallet address (e.g. 0x...)"/>
+        <input class="edit-input" id="editTwitter" placeholder="Twitter handle (e.g. @you)"/>
+        <input class="edit-input" id="editGithub" placeholder="GitHub username"/>
+        <input class="edit-input" id="editWebsite" placeholder="Website URL"/>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-primary" onclick="saveProfile()">Save</button>
+          <button class="btn" onclick="toggleEdit()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- USER POSTS -->
+    <div class="tabs">
+      <div class="tab active">Posts</div>
+      <div class="tab">Votes</div>
+      <div class="tab">Competitions</div>
+    </div>
+    <div id="userPosts"><div style="text-align:center;padding:40px;font-size:13px;color:var(--text3);">Loading posts...</div></div>
+  </main>
+
+  <aside class="right-col">
+    <div class="widget-card">
+      <div class="widget-title">📊 Live Prices</div>
+      <div id="priceWidget"><div style="font-size:13px;color:var(--text3);">Loading...</div></div>
+    </div>
+    <div class="widget-card" id="chainsWidget">
+      <div class="widget-title">🔗 Chains</div>
+      <div style="font-size:13px;color:var(--text3);">No chains added yet</div>
+    </div>
+  </aside>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../assets/js/supabase.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/auth-state.js"></script>
+<script src="../assets/js/prices.js"></script>
+<script>
+let profileUser = null
+let isOwnProfile = false
+
+async function loadProfile() {
+  const params = new URLSearchParams(window.location.search)
+  const username = params.get('u')
+
+  await new Promise(r => setTimeout(r, 900))
+
+  let query = window.supabaseClient.from('users').select('*')
+  if (username) {
+    query = query.eq('username', username)
+  } else if (window.currentUser) {
+    query = query.eq('id', window.currentUser.id)
+  } else {
+    window.location.href = 'auth.html'
+    return
+  }
+
+  const { data: user } = await query.single()
+  if (!user) { document.getElementById('profileName').textContent = 'User not found'; return }
+
+  profileUser = user
+  isOwnProfile = window.currentUser?.id === user.id
+
+  // Set profile info
+  const initials = (user.username || 'AN').slice(0,2).toUpperCase()
+  document.getElementById('profileAvatar').textContent = initials
+  document.getElementById('profileName').textContent = user.display_name || user.username
+  document.getElementById('profileUsername').textContent = '@' + user.username
+  document.getElementById('profileBio').textContent = user.bio || (isOwnProfile ? 'Add a bio to tell the community what you build' : '')
+  document.title = (user.display_name || user.username) + ' — DevBlock'
+
+  // Links
+  const links = []
+  if (user.wallet_address) links.push(`<span style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);">💳 ${user.wallet_address.slice(0,6)}...${user.wallet_address.slice(-4)}</span>`)
+  if (user.twitter) links.push(`<a href="https://twitter.com/${user.twitter.replace('@','')}" target="_blank" style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);">𝕏 ${user.twitter}</a>`)
+  if (user.github) links.push(`<a href="https://github.com/${user.github}" target="_blank" style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);"><i class="ti ti-brand-github"></i> ${user.github}</a>`)
+  if (user.website) links.push(`<a href="${user.website}" target="_blank" style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);">🌐 website</a>`)
+  document.getElementById('profileLinks').innerHTML = links.join('')
+
+  // Show/hide buttons
+  document.getElementById('editBtn').style.display = isOwnProfile ? 'flex' : 'none'
+  document.getElementById('followBtn').style.display = !isOwnProfile ? 'flex' : 'none'
+  document.getElementById('msgBtn').style.display = !isOwnProfile ? 'flex' : 'none'
+
+  // Pre-fill edit form
+  document.getElementById('editDisplayName').value = user.display_name || ''
+  document.getElementById('editBio').value = user.bio || ''
+  document.getElementById('editWallet').value = user.wallet_address || ''
+  document.getElementById('editTwitter').value = user.twitter || ''
+  document.getElementById('editGithub').value = user.github || ''
+  document.getElementById('editWebsite').value = user.website || ''
+
+  // Load stats
+  const { count: postCount } = await window.supabaseClient.from('posts').select('*', { count: 'exact', head: true }).eq('user_id', user.id)
+  const { count: followerCount } = await window.supabaseClient.from('follows').select('*', { count: 'exact', head: true }).eq('following_id', user.id)
+  const { count: followingCount } = await window.supabaseClient.from('follows').select('*', { count: 'exact', head: true }).eq('follower_id', user.id)
+
+  document.getElementById('statPosts').textContent = postCount || 0
+  document.getElementById('statFollowers').textContent = followerCount || 0
+  document.getElementById('statFollowing').textContent = followingCount || 0
+
+  loadUserPosts(user.id)
+}
+
+async function loadUserPosts(userId) {
+  const { data: posts } = await window.supabaseClient
+    .from('posts').select('*').eq('user_id', userId).order('created_at', { ascending: false })
+
+  const el = document.getElementById('userPosts')
+  if (!posts || posts.length === 0) {
+    el.innerHTML = '<div style="text-align:center;padding:40px;font-size:13px;color:var(--text3);">No posts yet</div>'
+    return
+  }
+
+  let totalVotes = 0
+  el.innerHTML = posts.map(post => {
+    totalVotes += post.votes || 0
+    return `<div class="post-card" style="flex-direction:column;gap:8px;">
+      <div style="font-size:15px;font-weight:600;">${post.title}</div>
+      <div style="font-size:13px;color:var(--text2);">${post.excerpt || ''}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        ${(post.tags||[]).map(t => `<span class="tag tag-solidity">${t}</span>`).join('')}
+        <span style="margin-left:auto;font-size:12px;color:var(--text3);">▲ ${post.votes||0} · ${timeAgo(post.created_at)}</span>
+      </div>
+    </div>`
+  }).join('')
+
+  document.getElementById('statVotes').textContent = totalVotes
+}
+
+function toggleEdit() {
+  const form = document.getElementById('editForm')
+  form.style.display = form.style.display === 'flex' ? 'none' : 'flex'
+}
+
+async function saveProfile() {
+  if (!window.currentUser) return
+  const updates = {
+    display_name: document.getElementById('editDisplayName').value.trim(),
+    bio: document.getElementById('editBio').value.trim(),
+    wallet_address: document.getElementById('editWallet').value.trim(),
+    twitter: document.getElementById('editTwitter').value.trim(),
+    github: document.getElementById('editGithub').value.trim(),
+    website: document.getElementById('editWebsite').value.trim()
+  }
+  const { error } = await window.supabaseClient.from('users').update(updates).eq('id', window.currentUser.id)
+  if (!error) { toggleEdit(); loadProfile() }
+}
+
+async function followUser() {
+  if (!window.currentUser || !profileUser) return
+  await window.supabaseClient.from('follows').insert({ follower_id: window.currentUser.id, following_id: profileUser.id })
+  document.getElementById('followBtn').textContent = 'Following'
+  document.getElementById('followBtn').disabled = true
+}
+
+function timeAgo(date) {
+  const diff = Date.now() - new Date(date)
+  const mins = Math.floor(diff/60000)
+  if (mins < 60) return mins+'m ago'
+  const hrs = Math.floor(mins/60)
+  if (hrs < 24) return hrs+'h ago'
+  return Math.floor(hrs/24)+'d ago'
+}
+
+window.addEventListener('DOMContentLoaded', () => setTimeout(loadProfile, 500))
+</script>
+</body>
+</html>
