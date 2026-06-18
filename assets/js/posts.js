@@ -1,9 +1,9 @@
-async function loadPosts() {
+async function loadPosts(chain) {
   if (!window.supabaseClient) return
   const { data: posts } = await window.supabaseClient
     .from('posts')
     .select('*, users(username, display_name)')
-    .order('votes', { ascending: false })
+    .order("votes", { ascending: false })
     .limit(20)
 
   const feed = document.getElementById('postFeed')
@@ -94,4 +94,4 @@ function timeAgo(date) {
   return Math.floor(hrs/24)+'d ago'
 }
 
-window.addEventListener('DOMContentLoaded', () => setTimeout(loadPosts, 1000))
+const chainFilter = new URLSearchParams(window.location.search).get("chain"); window.addEventListener("DOMContentLoaded", () => setTimeout(() => loadPosts(chainFilter), 1000))
