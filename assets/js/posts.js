@@ -1,4 +1,4 @@
-async function loadPosts(chain) {
+async function loadPosts(chain, tag) {
   if (!window.supabaseClient) return
   const { data: posts } = await window.supabaseClient
     .from('posts')
