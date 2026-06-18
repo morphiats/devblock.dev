@@ -90,6 +90,7 @@
         <input class="edit-input" id="editTwitter" placeholder="Twitter handle e.g. morphiatz (no @ or URL)"/>
         <input class="edit-input" id="editGithub" placeholder="GitHub username e.g. morphiats (no URL)"/>
         <input class="edit-input" id="editWebsite" placeholder="Website URL"/>
+        <input class="edit-input" id="editDiscord" placeholder="Discord username e.g. morphiatz"/>
         <div style="display:flex;gap:8px;">
           <button class="btn btn-primary" onclick="saveProfile()">Save</button>
           <button class="btn" onclick="toggleEdit()">Cancel</button>
@@ -163,6 +164,7 @@ async function loadProfile() {
   if (user.wallet_address) links.push(`<span style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);">💳 ${user.wallet_address.slice(0,6)}...${user.wallet_address.slice(-4)}</span>`)
   if (user.twitter) links.push(`<a href="https://twitter.com/${user.twitter.replace('@','')}" target="_blank" style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);">𝕏 ${user.twitter}</a>`)
   if (user.github) links.push(`<a href="https://github.com/${user.github}" target="_blank" style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);"><i class="ti ti-brand-github"></i> ${user.github}</a>`)
+  if (user.discord) links.push(`<span style="font-size:11px;background:#5865F2;padding:3px 8px;border-radius:20px;color:#fff;">💬 ${user.discord}</span>`)
   if (user.website) links.push(`<a href="${user.website}" target="_blank" style="font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:20px;color:var(--text2);">🌐 website</a>`)
   document.getElementById('profileLinks').innerHTML = links.join('')
 
@@ -230,7 +232,8 @@ async function saveProfile() {
     wallet_address: document.getElementById('editWallet').value.trim(),
     twitter: document.getElementById('editTwitter').value.trim(),
     github: document.getElementById('editGithub').value.trim(),
-    website: document.getElementById('editWebsite').value.trim()
+    website: document.getElementById("editWebsite").value.trim(),
+    discord: document.getElementById("editDiscord").value.trim()
   }
   const { error } = await window.supabaseClient.from('users').update(updates).eq('id', window.currentUser.id)
   if (!error) { toggleEdit(); loadProfile() }
