@@ -1,5 +1,12 @@
 window.connectWallet = async function() {
+  // Mobile + no MetaMask extension → deep link into MetaMask mobile app's browser
   if (typeof window.ethereum === 'undefined') {
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+    if (isMobile) {
+      const dappUrl = window.location.href.replace(/^https?:\/\//, '')
+      window.location.href = 'https://metamask.app.link/dapp/' + dappUrl
+      return
+    }
     alert('MetaMask not found. Please install MetaMask to connect your wallet.\n\nhttps://metamask.io')
     return
   }
@@ -8,7 +15,6 @@ window.connectWallet = async function() {
     const address = accounts[0]
     const short = address.slice(0,6) + '...' + address.slice(-4)
 
-    // Update all connect wallet buttons
     document.querySelectorAll('.btn-primary').forEach(btn => {
       if (btn.textContent.includes('Connect Wallet') || btn.textContent.includes('Connect')) {
         btn.innerHTML = '<i class="ti ti-wallet"></i> ' + short
@@ -16,10 +22,8 @@ window.connectWallet = async function() {
       }
     })
 
-    // Save to localStorage
     localStorage.setItem('devblock-wallet', address)
 
-    // Update user profile with wallet if logged in
     if (window.currentUser && window.supabaseClient) {
       await window.supabaseClient.from('users').update({ wallet_address: address }).eq('id', window.currentUser.id)
     }
@@ -34,7 +38,6 @@ window.connectWallet = async function() {
   }
 }
 
-// Auto-reconnect if previously connected
 window.addEventListener('DOMContentLoaded', async function() {
   const saved = localStorage.getItem('devblock-wallet')
   if (saved && typeof window.ethereum !== 'undefined') {
